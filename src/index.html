@@ -12,6 +12,21 @@
             <video id="webcam" autoplay playsinline width="640" height="480"></video>
             <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
             <button id="capture">Capture</button>
+            <script>
+                let capturing = false;
+            
+                document.getElementById('capture').addEventListener('click', function() {
+                    capturing = !capturing; // Toggle the capturing state
+            
+                    if (capturing) {
+                        this.textContent = 'Stop Capturing';
+                        // Add code here to start capturing
+                    } else {
+                        this.textContent = 'Capture';
+                        // Add code here to stop capturing
+                    }
+                });
+            </script>
             <button id="switch-camera">Switch Camera</button>
         </div>
 

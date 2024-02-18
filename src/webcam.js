@@ -22,7 +22,7 @@ setInterval(function() {
     if (runCapture) {
         captureImage();
     }
-}, 7000); // 5000 milliseconds = 5 seconds
+}, 10000); // 5000 milliseconds = 5 seconds
 
 
 // Function to capture image from webcam and process it

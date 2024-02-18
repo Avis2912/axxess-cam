@@ -3,8 +3,8 @@ body {
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding-top: 20px;
-            background-color: #121212; /* Dark mode background */
+            padding-top: 50px;
+            background-color: #ffffff; /* Dark mode background */
             color: #ffffff; /* Light text for dark mode */
             height: 100vh;
             margin: 0;
@@ -14,52 +14,60 @@ body {
             flex-direction: column;
             align-items: center;
             margin-right: 20px; /* Adjust as needed */
-            background-color: #1e1e1e; /* Dark background for elements */
+            background-color: #b4233b; /* Dark background for elements */
             padding: 10px;
-            border-radius: 8px; /* Rounded corners */
+            border-radius: 12px; /* Rounded corners */
         }
         #webcam {
             border-radius: 8px; /* Rounded corners for webcam */
         }
         #chatbox {
-            height: 480px; /* Match webcam height */
+            height: 565px; /* Match webcam height */
             overflow-y: auto;
             border: 1px solid #333333; /* Darker border for elements */
-            padding: 10px;
+            /* padding: 10px; */
             width: 320px; /* Adjust as needed */
             margin-left: 20px; /* Adjust as needed */
-            background-color: #1e1e1e; /* Dark background for elements */
-            border-radius: 8px; /* Rounded corners */
+            background-color: #b4233b; /* Dark background for elements */
+            border-radius: 12px; /* Rounded corners */
         }
         #capture {
-            width: 150px;
+            width: 100%;
             height: 50px;
             margin-top: 20px;
-            background-color: #333333; /* Dark button background */
-            color: #ffffff; /* Light button text */
+            font-size: 22px;
+            font-family: 'serif';
+            background-color: #ffffff; /* Dark button background */
+            color: #333333; /* Light button text */
             border: none;
             border-radius: 8px; /* Rounded corners for button */
             cursor: pointer;
         }
         #capture:hover {
-            background-color: #454545; /* Lighter background on hover */
+            background-color: #b4233b;
+            border: 2px solid #ffffff;
+            color: #ffffff; 
+            /* Lighter background on hover */
         }
         #chatbox .user-message:nth-child(odd),
 #chatbox .assistant-message:nth-child(even) {
-    background-color: #2a2a2a; /* Darker background for every other message */
+    background-color: #2a2a2a;
+    border-radius: 0px; /* Darker background for every other message */
 }
 
 #chatbox .user-message,
 #chatbox .assistant-message {
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
+    border-radius: 0px;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 0px;
     position: relative;
 }
 
 #chatbox .timestamp {
     font-size: 0.8em;
-    color: #777;
+    color: #ffffff;
     position: absolute;
     bottom: 5px;
     right: 10px;
@@ -96,12 +104,17 @@ body {
         }
         #footer {
     position: fixed;
+    display: 'flex';
     bottom: 0;
     left: 0;
+    height: 0px;
+    font-size: 24px;
     width: 100%;
     text-align: center;
+    align-items: center;
     background-color: #1e1e1e; /* Match the dark theme */
-    padding: 10px 0; /* Padding for aesthetics */
+    padding: 20px;
+    padding-bottom: 40px; /* Padding for aesthetics */
     color: #ffffff; /* Text color for visibility */
 }
 /* Hide the switch camera button by default */
