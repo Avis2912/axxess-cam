@@ -12,7 +12,7 @@
             <video id="webcam" autoplay playsinline width="640" height="480"></video>
             <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
             <button id="capture">Capture</button>
-            <script>
+            <script type="module">
                 let capturing = false;
             
                 document.getElementById('capture').addEventListener('click', function() {
@@ -37,7 +37,7 @@
         </div>     
     </div>
 
-    <script src="webcam.js"></script>
+    <script type="module" src="webcam.js"></script>
 
     <div id="footer">
         <b>AXXESS CAM</b> 

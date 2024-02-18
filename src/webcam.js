@@ -1,3 +1,22 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+import { getFirestore, doc, getDoc, updateDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBjIHbJnt1l5eh1zfxXcnce4bpzVVLQsbU",
+    authDomain: "restful-cbcd4.firebaseapp.com",
+    projectId: "restful-cbcd4",
+    storageBucket: "restful-cbcd4.appspot.com",
+    messagingSenderId: "205445907884",
+    appId: "1:205445907884:web:538aee7dc0b42c0c386609",
+    measurementId: "G-FZRFK5VRBY"
+  };
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+
 // Initialize the webcam and set event listeners
 function initializeWebcam() {
     const video = document.getElementById('webcam');
@@ -54,6 +73,18 @@ function processImage(base64Image) {
 
 // Handle the server response
 function handleResponse(data) {
+
+        const docRef = doc(db, "meds", "status");
+        updateDoc(docRef, { tylenol: true })
+          .then(() => {
+            console.log(
+              "Document successfully updated with Tylenol status set to true"
+            );
+          })
+          .catch((error) => {
+            console.error("Error updating document: ", error);
+          });
+
     toggleLoader(false); // Hide the loader
     if(data.error) {
         console.error(data.error);
@@ -61,10 +92,13 @@ function handleResponse(data) {
         return;
     }
     appendToChatbox(data.choices[0].message.content);
+  
+          
 }
 
 // Handle any errors during fetch
 function handleError(error) {
+    
     toggleLoader(false); // Hide the loader
     console.error('Fetch error:', error);
     appendToChatbox(`Error: ${error.message}`, true);
