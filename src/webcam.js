@@ -74,6 +74,51 @@ function processImage(base64Image) {
 // Handle the server response
 function handleResponse(data) {
 
+    toggleLoader(false); // Hide the loader
+    if(data.error) {
+        console.error(data.error);
+        appendToChatbox(`Error: ${data.error}`, true);
+        return;
+    }
+
+
+    if (data.choices[0].message.content === "M") {
+            const docRef = doc(db, "meds", "status");
+            updateDoc(docRef, { tylenol: true })
+              .then(() => {
+                console.log(
+                  "Document successfully updated with Tylenol status set to true"
+                );
+              })
+              .catch((error) => {
+                console.error("Error updating document: ", error);
+              });
+        }
+    
+        if (data.choices[0].message.content === "F") {
+                const docRef = doc(db, "meds", "status");
+                updateDoc(docRef, { fallen: true })
+                  .then(() => {
+                    console.log(
+                      "Document successfully updated with Fallen status set to true"
+                    );
+                  })
+                  .catch((error) => {
+                    console.error("Error updating document: ", error);
+                  });
+        }
+        
+    appendToChatbox(data.choices[0].message.content);
+
+    
+  
+          
+}
+
+// Handle any errors during fetch
+function handleError(error) {
+    
+    console.error("hey first one");
         const docRef = doc(db, "meds", "status");
         updateDoc(docRef, { tylenol: true })
           .then(() => {
@@ -85,20 +130,6 @@ function handleResponse(data) {
             console.error("Error updating document: ", error);
           });
 
-    toggleLoader(false); // Hide the loader
-    if(data.error) {
-        console.error(data.error);
-        appendToChatbox(`Error: ${data.error}`, true);
-        return;
-    }
-    appendToChatbox(data.choices[0].message.content);
-  
-          
-}
-
-// Handle any errors during fetch
-function handleError(error) {
-    
     toggleLoader(false); // Hide the loader
     console.error('Fetch error:', error);
     appendToChatbox(`Error: ${error.message}`, true);
