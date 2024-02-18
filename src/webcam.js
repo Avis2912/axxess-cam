@@ -11,6 +11,20 @@ function initializeWebcam() {
         });
 }
 
+let runCapture = false;
+
+// Function to toggle the capture state
+function toggleCapture() {
+    runCapture = !runCapture; // Toggle the value of runCapture
+}
+
+setInterval(function() {
+    if (runCapture) {
+        captureImage();
+    }
+}, 7000); // 5000 milliseconds = 5 seconds
+
+
 // Function to capture image from webcam and process it
 function captureImage() {
     const video = document.getElementById('webcam');
@@ -111,7 +125,7 @@ function switchCamera() {
 document.addEventListener('DOMContentLoaded', function() {
     initializeWebcam();
 
-    document.getElementById('capture').addEventListener('click', captureImage);
+    document.getElementById('capture').addEventListener('click', toggleCapture);
     document.getElementById('switch-camera').addEventListener('click', switchCamera());
 
     // Other event listeners here...
